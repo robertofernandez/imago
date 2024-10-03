@@ -1,8 +1,35 @@
-# IMago - Image Processing Application
+# IMago
+This project has two educational java versions and one to-be-defined pro version with the goal of making an efficient and flexible image application.
+
+## IMago 2
+
+```
+imago2/
+├── pom.xml
+└── src/
+    ├── main/
+    │   ├── java/
+    │   │   └── co/
+    │   │       └── itpex/
+    │   │           └── imago2/
+    │   │               └── app/
+    │   │                   ├── MainApp.java
+    │   │                   ├── view/
+    │   │                   │   ├── MainFrame.java
+    │   │                   │   └── ImageInternalFrame.java
+    │   │                   └── components/
+    │   │                       └── CustomToolbar.java
+    │   └── resources/
+    │       └── images/
+    │           └── imago2-icon.png
+    └── test/
+```
+
+## IMago 2024
 
 IMago is a JavaFX-based image processing application designed for pedagogical purposes. It allows users to apply filters, resize images, and add custom image operations. The application provides an intuitive interface with a layout similar to image editing software like Photoshop, featuring menus for various image operations, toolbar icons, and interactive views.
 
-## Project Structure
+### Project Structure
 
 The folder structure is organized to keep Java code, resources, and tests separated for better maintainability. Below is the structure of the project:
 
@@ -25,14 +52,14 @@ imago2024/
         └───resources                       # Test resources such as mock data and sample images
 ```
 
-## Features
+### Features
 
 - **Image Loading and Saving**: Load images from the filesystem and save them after processing.
 - **Image Operations**: Apply different operations such as resizing, cropping, and applying filters.
 - **Customizable Toolbar**: Includes icons and tools for quick access to operations.
 - **Modular Design**: Easily extendable with new image processing features.
 
-## Requirements
+### Requirements
 
 To build and run the project, you will need:
 
@@ -42,7 +69,7 @@ To build and run the project, you will need:
 
 > **Note**: The project is compatible with Java 11 and above. If you are using Java 8, JavaFX dependencies need to be adjusted accordingly.
 
-## Getting Started
+### Getting Started
 
 1. **Clone the Repository**:
 
@@ -72,15 +99,15 @@ To build and run the project, you will need:
 
    Alternatively, if you are using an IDE like IntelliJ IDEA or Eclipse, you can run the `MainApp` class directly.
 
-## Configuration
+### Configuration
 
-### 1. **FXML Files**
+#### 1. **FXML Files**
 All `.fxml` files defining the structure of the UI should be placed in the `src/main/resources/fmx` directory. These files define how each component is arranged and connected.
 
-### 2. **CSS Styles**
+#### 2. **CSS Styles**
 The application's styling is managed through `.css` files located in `src/main/resources/css`. You can modify or add new CSS files to change the appearance of the components.
 
-### 3. **Icons and Images**
+#### 3. **Icons and Images**
 All icons used in the toolbar and any other images should be stored in `src/main/resources/images/toolbar-icons`. For example:
 
 ```
@@ -90,10 +117,10 @@ toolbar-icons/
 └── filter.png
 ```
 
-### 4. **Controllers**
+#### 4. **Controllers**
 Java controllers are located in the `src/main/java/co/itpex/imago/controllers` directory. Each `.fxml` file typically has a corresponding controller class to handle user interactions and events.
 
-## Running Tests
+### Running Tests
 
 Test files are organized under the `src/test` directory. To run the tests:
 
@@ -103,7 +130,7 @@ mvn test
 
 Tests should include unit tests for image operations, as well as integration tests to verify UI elements and interactions.
 
-## Contributing
+### Contributing
 
 Feel free to contribute to IMago! If you have a new feature or improvement in mind, please follow these steps:
 
@@ -112,11 +139,11 @@ Feel free to contribute to IMago! If you have a new feature or improvement in mi
 3. Commit your changes.
 4. Open a pull request.
 
-## License
+### License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-## Contact
+### Contact
 
 For any questions or suggestions, please reach out at [rgfernan@gmail.com](mailto:rgfernan@gmail.com).
 

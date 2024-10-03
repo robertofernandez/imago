@@ -16,7 +16,7 @@ public class MainController {
     private MenuItem menuSave;
 
     @FXML
-    private void handleOpenAction(ActionEvent event) {
+    private void handleOpenImage(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Abrir Imagen");
         fileChooser.getExtensionFilters().addAll(
@@ -31,7 +31,7 @@ public class MainController {
     }
 
     @FXML
-    private void handleSaveAction(ActionEvent event) {
+    private void handleSaveImage(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Guardar Imagen");
         fileChooser.getExtensionFilters().addAll(
@@ -45,5 +45,20 @@ public class MainController {
             // Lógica para guardar la imagen
             System.out.println("Imagen guardada en: " + file.getAbsolutePath());
         }
+    }
+
+    @FXML
+    private void handleExit(ActionEvent event) {
+        
+    }
+    
+    @FXML
+    private void handleResize(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void handleFilter(ActionEvent event) {
+        
     }
 }
