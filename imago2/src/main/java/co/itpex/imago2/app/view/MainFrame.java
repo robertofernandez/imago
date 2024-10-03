@@ -4,8 +4,12 @@ import co.itpex.imago2.app.components.CustomToolbar;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class MainFrame extends JFrame {
+
+    private static final long serialVersionUID = 8724320585911158994L;
 
     private JDesktopPane desktopPane;
     private JScrollPane scrollPane;
@@ -16,10 +20,11 @@ public class MainFrame extends JFrame {
         setTitle("Imago2 - Image Editor Application");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1024, 768);
+        setLocationRelativeTo(null);
 
         // Create the main desktop pane
         desktopPane = new JDesktopPane();
-        desktopPane.setPreferredSize(new Dimension(2000, 2000)); // Initial large size
+        desktopPane.setPreferredSize(new Dimension(1024, 768)); // Start with a size that matches the main window
 
         // Wrap desktop pane in a scroll pane
         scrollPane = new JScrollPane(desktopPane);
@@ -28,6 +33,14 @@ public class MainFrame extends JFrame {
         // Create toolbar and menu bar
         setJMenuBar(createMenuBar());
         add(createToolBar(), BorderLayout.NORTH);
+
+        // Update desktop size when the main frame is resized
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                adjustDesktopPaneSize();
+            }
+        });
 
         // Display the main frame
         setVisible(true);
@@ -71,17 +84,52 @@ public class MainFrame extends JFrame {
         desktopPane.add(frame);
         frame.setVisible(true);
 
+        // Add a listener to restrict the internal frame movement
+        frame.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentMoved(ComponentEvent e) {
+                keepFrameWithinBounds(frame);
+            }
+
+            @Override
+            public void componentResized(ComponentEvent e) {
+                keepFrameWithinBounds(frame);
+            }
+        });
+
         // Update the preferred size of the desktop pane to fit the new frame
         adjustDesktopPaneSize();
     }
 
-    // Adjust desktop pane size to fit all internal frames
+    // Adjust desktop pane size to ensure it's not smaller than the visible area
     private void adjustDesktopPaneSize() {
-        Rectangle bounds = desktopPane.getBounds();
-        for (JInternalFrame frame : desktopPane.getAllFrames()) {
-            bounds = bounds.union(frame.getBounds());
-        }
-        desktopPane.setPreferredSize(bounds.getSize());
+        // Get the size of the scroll pane's viewport (visible area)
+        Dimension visibleSize = scrollPane.getViewport().getSize();
+
+        // Get the current desktop size
+        Dimension desktopSize = desktopPane.getPreferredSize();
+
+        // Ensure desktopPane is at least as big as the visible area
+        int newWidth = Math.max(visibleSize.width, desktopSize.width);
+        int newHeight = Math.max(visibleSize.height, desktopSize.height);
+
+        desktopPane.setPreferredSize(new Dimension(newWidth, newHeight));
         desktopPane.revalidate();
+    }
+
+    // Keep internal frames within the bounds of the desktop pane
+    private void keepFrameWithinBounds(JInternalFrame frame) {
+        Rectangle bounds = frame.getBounds();
+
+        int maxX = desktopPane.getWidth() - bounds.width;
+        int maxY = desktopPane.getHeight() - bounds.height;
+
+        // Ensure frame does not go beyond the desktop bounds
+        int newX = Math.max(0, Math.min(bounds.x, maxX));
+        int newY = Math.max(0, Math.min(bounds.y, maxY));
+
+        if (newX != bounds.x || newY != bounds.y) {
+            frame.setLocation(newX, newY);
+        }
     }
 }

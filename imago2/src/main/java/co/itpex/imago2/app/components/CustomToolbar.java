@@ -4,6 +4,8 @@ import javax.swing.*;
 
 public class CustomToolbar extends JToolBar {
 
+    private static final long serialVersionUID = 1430874053920239452L;
+
     public CustomToolbar() {
         super("Tools");
 
