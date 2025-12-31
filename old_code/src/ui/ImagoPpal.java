@@ -61,6 +61,7 @@ import operaciones.SuavizadoSelPosI;
 import operaciones.SuperNerdyTraceBot;
 import operaciones.Taller1;
 import operaciones.Threshold;
+import operaciones.TilesGameSourcesMapper;
 import operaciones.TraceBorders;
 import util.DistanceColorDescription;
 import util.mdi.MDIDesktopPane;
@@ -143,6 +144,7 @@ public class ImagoPpal extends JFrame implements InternalFrameListener, ActionLi
         smoothThresholdMenuItems = new Vector<MenuItemDeOperacion>();
         greenContrastColorFindingMenuItems = new Vector<MenuItemDeOperacion>();
         substractColorFindingMenuItems = new Vector<MenuItemDeOperacion>();
+        menuItemOperaciones.add(new MenuItemDeOperacion(new TilesGameSourcesMapper()));
         menuItemOperaciones.add(new MenuItemDeOperacion(new OperadorNulo()));
         menuItemOperaciones.add(new MenuItemDeOperacion(new Mitad()));
         menuItemOperaciones.add(new MenuItemDeOperacion(new MedianaIneficiente()));

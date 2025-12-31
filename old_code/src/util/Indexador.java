@@ -29,8 +29,8 @@ public class Indexador {
     public int get(int x, int y) {
         int index = y * ancho + x;
         if (index > arregloIndexado.length - 1 || index < 0) {
-            System.out.println((new Integer(x)).toString() + ", " + (new Integer(y)).toString());
-            System.out.println((new Integer(ancho)).toString() + ", " + (new Integer(alto)).toString());
+            //System.out.println((new Integer(x)).toString() + ", " + (new Integer(y)).toString());
+            //System.out.println((new Integer(ancho)).toString() + ", " + (new Integer(alto)).toString());
             return 0;
         }
         return (arregloIndexado[index]);
@@ -39,8 +39,8 @@ public class Indexador {
     public void set(int valor, int x, int y) {
         int index = y * ancho + x;
         if (index > arregloIndexado.length - 1 || index < 0) {
-            System.out.println((new Integer(x)).toString() + ", " + (new Integer(y)).toString());
-            System.out.println((new Integer(ancho)).toString() + ", " + (new Integer(alto)).toString());
+            //System.out.println((new Integer(x)).toString() + ", " + (new Integer(y)).toString());
+            //System.out.println((new Integer(ancho)).toString() + ", " + (new Integer(alto)).toString());
             return;
         }
         arregloIndexado[index] = valor;
