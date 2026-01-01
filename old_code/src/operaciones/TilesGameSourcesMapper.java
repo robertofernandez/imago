@@ -25,9 +25,11 @@ public class TilesGameSourcesMapper implements OperadorUnarioDeImagen {
 	public TilesGameSourcesMapper() {
 		super();
 		// azulAire
-		createColor(33, 107, 173, "A");
+		//createColor(33, 107, 173, "A");
+		createColor(107,33, 173, "A");
 		// verdeSuelo
-		createColor(24, 41, 16, "G");
+		//createColor(24, 41, 16, "G");
+		createColor(41, 24, 16, "G");
 		//255, 243, 0
 	}
 
@@ -67,8 +69,8 @@ public class TilesGameSourcesMapper implements OperadorUnarioDeImagen {
 		Indexador newGreenIndex = new Indexador(verde, ancho, alto);
 		Indexador newBlueIndex = new Indexador(azul, ancho, alto);
 
-		for (int i = 0; i < alto; i++) {
-			for (int j = 0; j < ancho; j++) {
+		for (int i = 0; i < ancho; i++) {
+			for (int j = 0; j < alto; j++) {
 				int redValue = redIndex.get(i, j);
 				int greenValue = greenIndex.get(i, j);
 				int blueValue = blueIndex.get(i, j);
@@ -77,7 +79,7 @@ public class TilesGameSourcesMapper implements OperadorUnarioDeImagen {
 				RgbColor bestMatchingColor = getBestMatchingColor(color, colorCodeToColor.values());
 				System.out.print(colorCodeToItem.get(bestMatchingColor.toString()));
 				
-				bestMatchingColor = color;
+				//bestMatchingColor = color;
 
 				newRedIndex.set(bestMatchingColor.getRed(), i, j);
 				newGreenIndex.set(bestMatchingColor.getGreen(), i, j);
